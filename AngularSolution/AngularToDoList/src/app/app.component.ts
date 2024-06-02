@@ -14,7 +14,7 @@ import { ToDoItemComponent } from './to-do-item/to-do-item.component';
 export class AppComponent {
   title = 'My Angular To Do List';
   filter: "all" | "active" | "done" = "all";
-  toDoItems = [
+  toDoItems: ToDoItem[] = [
     { description: "wake up", done: true },
     { description: "eat", done: false },
     { description: "survive", done: false },
