@@ -41,6 +41,14 @@ namespace AspNetCoreWebAPI.Repositories
                     toDoItems = queryObject.IsDescending ? toDoItems.OrderByDescending(x => x.Description) : toDoItems.OrderBy(x => x.Description);
                 }
             }
+            if(queryObject.Done != null)
+            {
+                toDoItems = toDoItems.Where(u => u.Done ==  queryObject.Done);
+            }
+            if(queryObject.DueDate != null)
+            {
+                toDoItems = toDoItems.Where(u => u.DueDate.Date == queryObject.DueDate.Value.Date);
+            }
             int skip = (queryObject.PageNumber - 1) * queryObject.PageSize;
 
             return await toDoItems.Skip(skip).Take(queryObject.PageSize).ToListAsync();
