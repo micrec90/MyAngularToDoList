@@ -1,9 +1,8 @@
 <div class="item">
-  <input
-    [id]="item.description"
-    type="checkbox"
-    (change)="item.done = !item.done"
-    [checked]="item.done" />
+  <input [id]="item.description"
+         type="checkbox"
+         (change)="item.done = !item.done"
+         [checked]="item.done" />
   <label [for]="item.description">{{item.description}}</label>
 
   <div class="btn-wrapper" *ngIf="!editable">
@@ -13,16 +12,16 @@
 
   <!-- This section shows only if user clicks Edit button -->
   <div *ngIf="editable">
-    <input
-      class="sm-text-input"
-      placeholder="edit item"
-      [value]="item.description"
-      #editedItem
-      (keyup.enter)="saveItem(editedItem.value)" />
+    <input class="sm-text-input"
+           placeholder="edit item"
+           [value]="item.description"
+           #editedItem
+           (keyup.enter)="saveItem(editedItem.value, editedDate.value)" />
+    <input id="datepicker" type="date" #editedDate [value]="item.dueDate" />
 
     <div class="btn-wrapper">
       <button class="btn" (click)="editable = !editable">Cancel</button>
-      <button class="btn btn-save" (click)="saveItem(editedItem.value)">
+      <button class="btn btn-save" (click)="saveItem(editedItem.value, editedDate.value)">
         Save
       </button>
     </div>

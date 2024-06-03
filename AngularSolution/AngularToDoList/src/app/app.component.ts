@@ -15,10 +15,10 @@ export class AppComponent {
   title = 'My Angular To Do List';
   filter: "all" | "active" | "done" = "all";
   toDoItems: ToDoItem[] = [
-    { description: "wake up", done: true },
-    { description: "eat", done: false },
-    { description: "survive", done: false },
-    { description: "sleep", done: false }
+    { description: "wake up", done: true, dueDate: '' },
+    { description: "eat", done: false, dueDate: '' },
+    { description: "survive", done: false, dueDate: '' },
+    { description: "sleep", done: false, dueDate: '' }
   ];
   get items() {
     if (this.filter === "all") {
@@ -33,7 +33,8 @@ export class AppComponent {
 
     this.toDoItems.unshift({
       description,
-      done: false
+      done: false,
+      dueDate: ''
     });
   }
   remove(item: ToDoItem) {

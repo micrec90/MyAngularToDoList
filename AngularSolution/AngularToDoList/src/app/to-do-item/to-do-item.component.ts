@@ -15,11 +15,12 @@ export class ToDoItemComponent {
   @Input() item!: ToDoItem;
   @Output() remove = new EventEmitter<ToDoItem>();
 
-  saveItem(description: string) {
+  saveItem(description: string, date: string) {
     if (!description) return;
 
     this.editable = false;
     this.item.description = description;
+    this.item.dueDate = date;
   }
 
 }

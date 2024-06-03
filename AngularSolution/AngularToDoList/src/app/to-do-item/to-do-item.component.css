@@ -58,6 +58,16 @@
   margin: 1rem 0;
 }
 
+input[type="date"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 2px solid #555;
+  display: block;
+  box-sizing: border-box;
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+
 /* Custom checkboxes
 Adapted from https://css-tricks.com/the-checkbox-hack/#custom-designed-radio-buttons-and-checkboxes */
 
