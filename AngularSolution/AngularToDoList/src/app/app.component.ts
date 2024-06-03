@@ -75,6 +75,13 @@ export class AppComponent implements OnInit, OnDestroy {
         },
         error: (response) => {
           console.log(response);
+          this.toDoItems.unshift({
+            id: this.toDoItems.length,
+            description: this.model.description,
+            done: this.model.done,
+            createdOn: new Date().toISOString().split('T')[0],
+            dueDate: this.model.dueDate,
+          });
         }
       }
     );
@@ -84,12 +91,12 @@ export class AppComponent implements OnInit, OnDestroy {
       {
         next: (response) => {
           console.log(response);
-          this.toDoItems.splice(this.toDoItems.indexOf(item), 1);
         },
         error: (response) => {
           console.log(response);
         }
       }
     );
+    this.toDoItems.splice(this.toDoItems.indexOf(item), 1);
   }
 }
