@@ -45,13 +45,13 @@ namespace AspNetCoreWebAPI.Controllers
 
             return toDoItem.ToToDoItemGetDTO();
         }
-        [HttpPut("{id:int}")]
-        public async Task<IActionResult> PutToDoItem(int id, ToDoItemPutDTO toDoItemPutDTO)
+        [HttpPatch("{id:int}")]
+        public async Task<IActionResult> PatchToDoItem(int id, ToDoItemPatchDTO toDoItemPatchDTO)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var toDoItem = await _toDoItemsRepository.PutAsync(id, toDoItemPutDTO);
+            var toDoItem = await _toDoItemsRepository.PatchAsync(id, toDoItemPatchDTO);
 
             if (toDoItem == null)
             {

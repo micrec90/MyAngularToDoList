@@ -14,9 +14,11 @@ export class ToDoItemService {
   getToDoItems(): Observable<ToDoItem[]> {
     return this.http.get<ToDoItem[]>(`https://localhost:7109/api/ToDoItems`);
   }
-
   postToDoItem(model: ToDoItemPost): Observable<ToDoItem> {
     return this.http.post<ToDoItem>(`https://localhost:7109/api/ToDoItems`, model);
+  }
+  patchToDoItem(model: ToDoItemPost, index: number): Observable<ToDoItem> {
+    return this.http.patch<ToDoItem>(`https://localhost:7109/api/ToDoItems/` + index, model);
   }
   deleteToDoItem(index: number): Observable<void> {
     return this.http.delete<void>(`https://localhost:7109/api/ToDoItems/` + index);

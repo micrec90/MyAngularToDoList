@@ -2,7 +2,7 @@
 
 namespace AspNetCoreWebAPI.DTOs
 {
-    public class ToDoItemPutDTO
+    public class ToDoItemPatchDTO
     {
         [Required]
         [MinLength(1)]

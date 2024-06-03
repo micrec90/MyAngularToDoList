@@ -66,7 +66,7 @@ namespace AspNetCoreWebAPI.Repositories
             return toDoItem;
         }
 
-        public async Task<ToDoItem?> PutAsync(int id, ToDoItemPutDTO toDoItemDTO)
+        public async Task<ToDoItem?> PatchAsync(int id, ToDoItemPatchDTO toDoItemDTO)
         {
             var toDoItem = await _context.ToDoItems.FirstOrDefaultAsync(x => x.Id == id);
 
