@@ -23,6 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private toDoItemGetSubscription?: Subscription;
   private toDoItemPostSubscription?: Subscription;
   private toDoItemDeleteSubscription?: Subscription;
+  private toDoItemPatchSubscription?: Subscription;
   constructor(private toDoItemService: ToDoItemService) {
 
   }
@@ -30,6 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.toDoItemPostSubscription?.unsubscribe();
     this.toDoItemGetSubscription?.unsubscribe();
     this.toDoItemDeleteSubscription?.unsubscribe();
+    this.toDoItemPatchSubscription?.unsubscribe();
   }
   ngOnInit(): void {
     this.toDoItemPostSubscription = this.toDoItemService.getToDoItems().subscribe(
@@ -82,6 +84,18 @@ export class AppComponent implements OnInit, OnDestroy {
             createdOn: new Date().toISOString().split('T')[0],
             dueDate: this.model.dueDate,
           });
+        }
+      }
+    );
+  }
+  edit(item: ToDoItem) {
+    this.toDoItemPatchSubscription = this.toDoItemService.patchToDoItem(item, item.id).subscribe(
+      {
+        next: (response) => {
+          console.log(response);
+        },
+        error: (response) => {
+          console.log(response);
         }
       }
     );

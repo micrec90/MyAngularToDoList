@@ -39,7 +39,11 @@
 
   <ul>
     <li *ngFor="let i of items">
-      <app-to-do-item (remove)="remove(i)" [item]="i"></app-to-do-item>
+      <app-to-do-item
+                      (remove)="remove(i)"
+                      (edit)="edit(i)"
+                      [item]="i">
+      </app-to-do-item>
     </li>
   </ul>
 </div>
