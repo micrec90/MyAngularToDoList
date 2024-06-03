@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ToDoItem } from '../app/to-do-item';
+import { ToDoItem } from '../models/to-do-item';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { ToDoItemPost } from '../models/to-do-item-post';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,10 @@ export class ToDoItemService {
     return this.http.get<ToDoItem[]>(`https://localhost:7109/api/ToDoItems`);
   }
 
-  postToDoItem(model: ToDoItem): Observable<void> {
-    return this.http.post<void>(`https://localhost:7109/api/ToDoItems`, model);
+  postToDoItem(model: ToDoItemPost): Observable<ToDoItem> {
+    return this.http.post<ToDoItem>(`https://localhost:7109/api/ToDoItems`, model);
+  }
+  deleteToDoItem(index: number): Observable<void> {
+    return this.http.delete<void>(`https://localhost:7109/api/ToDoItems/` + index);
   }
 }
