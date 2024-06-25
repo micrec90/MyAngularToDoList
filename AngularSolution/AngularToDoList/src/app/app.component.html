@@ -39,11 +39,22 @@
 
   <ul>
     <li *ngFor="let i of items">
-      <app-to-do-item
-                      (remove)="remove(i)"
+      <app-to-do-item (remove)="remove(i)"
                       (edit)="edit(i)"
                       [item]="i">
       </app-to-do-item>
     </li>
   </ul>
+  <mat-paginator #paginator
+                 class="demo-paginator"
+                 (page)="handlePageEvent($event)"
+                 [length]="length"
+                 [pageSize]="pageSize"
+                 [disabled]="disabled"
+                 [showFirstLastButtons]="showFirstLastButtons"
+                 [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+                 [hidePageSize]="hidePageSize"
+                 [pageIndex]="pageIndex"
+                 aria-label="Select page">
+  </mat-paginator>
 </div>

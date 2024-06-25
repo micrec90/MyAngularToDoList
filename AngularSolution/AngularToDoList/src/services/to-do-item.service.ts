@@ -11,7 +11,11 @@ export class ToDoItemService {
 
   constructor(private http: HttpClient) { }
 
-  getToDoItems(): Observable<ToDoItem[]> {
+  getToDoItems(pageSize?: number, pageIndex?: number): Observable<ToDoItem[]> {
+    if (pageSize != undefined && pageIndex != undefined) {
+      const index = pageIndex + 1
+      return this.http.get<ToDoItem[]>(`https://localhost:7109/api/ToDoItems?PageNumber=` + index + '&PageSize=' + pageSize);
+    }
     return this.http.get<ToDoItem[]>(`https://localhost:7109/api/ToDoItems`);
   }
   postToDoItem(model: ToDoItemPost): Observable<ToDoItem> {
