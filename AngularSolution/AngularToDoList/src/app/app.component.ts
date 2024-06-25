@@ -110,6 +110,7 @@ export class AppComponent implements OnInit, OnDestroy {
           response.dueDate = response.dueDate.split('T')[0];
           this.toDoItems.unshift(response);
           this.length = this.toDoItems.length;
+          this.fetchData();
         },
         error: (response) => {
           console.log(response);
@@ -141,6 +142,7 @@ export class AppComponent implements OnInit, OnDestroy {
       {
         next: (response) => {
           console.log(response);
+          this.fetchData();
         },
         error: (response) => {
           console.log(response);
